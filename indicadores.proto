@@ -1,0 +1,40 @@
+
+syntax = "proto2";
+
+message Trama{
+  enum  Lapiz{
+    TRI = 0;
+    HEX = 1;
+  }; 
+  optional    Lapiz     lapiz = 1;
+  optional    uint32    bat_lapiz = 2;   
+  optional    uint32    bat_pulsera = 3;  
+  enum  Presion{
+    HIPOTONICO = 0;
+    HIPERTONICO = 1;
+    NORMAL = 2;
+  }; 
+  optional    Presion   presion = 4; 
+  enum  Agarre{
+    MODAL = 0; 
+    DIGITAL = 1;
+    TRIDIGITAL = 2;
+  };   
+  optional    Agarre   agarre = 5;
+  enum  Direccionalidad{
+    MALA = 0; 
+    BUENA = 1;
+  };
+  optional    Direccionalidad   direccionalidad = 6;
+    enum Animo{
+    ESTRESADO = 0;
+    CALMADO = 1;
+  };
+  optional    Animo   animo = 7;
+  enum Movimiento{
+    PALMAR = 0;
+    PRONSUP = 1;
+  };
+  optional    Movimiento    movimiento = 8;
+
+};
