@@ -37,7 +37,7 @@ static int ad7298_parse(uint8_t *buff, uint8_t ch_num, uint8_t *results)
 
 /*
 [PARAMS]    presion_dedos
-            orientación
+            orientaciÃ³n
 
 */
 
@@ -94,7 +94,7 @@ uint32_t bateria(int16_t val){
     
 }
 
-int mayor_elemento(uint8_t *array, int size){    //devuelve el indice del número mayor en el array
+int mayor_elemento(uint8_t *array, int size){    //devuelve el indice del nÃºmero mayor en el array
     int indice = 0;
 
     for (int i = 1; i < size; i++){
