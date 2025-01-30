@@ -82,10 +82,10 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 #define PERIODO_MUESTREO  APP_TIMER_TICKS(400)   //muestreo
 APP_TIMER_DEF(m_timer_muestreo_id);
 
-#define PERIODO_TIMER_BLINK  APP_TIMER_TICKS(500)   //seÒal lumÌnica
+#define PERIODO_TIMER_BLINK  APP_TIMER_TICKS(500)   //se√±al lum√≠nica
 APP_TIMER_DEF(m_timer_blink_id);
 
-#define PERIODO_CONECTADO_SIN_USO  APP_TIMER_TICKS(100000)   //tiempo de espera para la desconexiÛn y apagado en caso de no detectar presiÛn en la punta (uso)
+#define PERIODO_CONECTADO_SIN_USO  APP_TIMER_TICKS(100000)   //tiempo de espera para la desconexi√≥n y apagado en caso de no detectar presi√≥n en la punta (uso)
 APP_TIMER_DEF(m_timer_inactividad_id);
 
 bool captura = false;
@@ -1050,7 +1050,7 @@ void init_imu(){
 
 /*********** ADC ***********/
 
-void saadc_callback(nrfx_saadc_evt_t const * p_event)    //llamada cuando el buffer se llena (DONE) o se alcanza un lÌmite (LIMIT)
+void saadc_callback(nrfx_saadc_evt_t const * p_event)    //llamada cuando el buffer se llena (DONE) o se alcanza un l√≠mite (LIMIT)
 {
     static int m_adc_evt_counter = 0;
     if (p_event->type == NRFX_SAADC_EVT_DONE)  //BUFFER LLENO
@@ -1155,7 +1155,7 @@ void saadc_init(void)
 //    err_code = nrfx_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
 //    APP_ERROR_CHECK(err_code);
 //
-//    err_code = nrfx_saadc_buffer_convert(m_buffer_pool[1], SAMPLES_IN_BUFFER);       //se utilizan dos buffers para no perder muestras en el procesamiento cuando un buffer est· lleno
+//    err_code = nrfx_saadc_buffer_convert(m_buffer_pool[1], SAMPLES_IN_BUFFER);       //se utilizan dos buffers para no perder muestras en el procesamiento cuando un buffer est√° lleno
 //    APP_ERROR_CHECK(err_code);
 
 
@@ -1188,13 +1188,13 @@ void spi_init(void){
 
 
 void habilitar_muestreo(){
-    nrfx_saadc_limits_set(1, NRFX_SAADC_LIMITL_DISABLED, 0);    // Activar limite superior para la presiÛn (detectar uso del l·piz)
+    nrfx_saadc_limits_set(1, NRFX_SAADC_LIMITL_DISABLED, 0);    // Activar limite superior para la presi√≥n (detectar uso del l√°piz)
     app_timer_muestreo_start();
 }
 
 void deshabilitar_muestreo(){
     captura = false;
-    nrfx_saadc_limits_set(1, NRFX_SAADC_LIMITL_DISABLED, NRFX_SAADC_LIMITH_DISABLED);    // Desactivar lÌmites presiÛn (detectar uso del l·piz)
+    nrfx_saadc_limits_set(1, NRFX_SAADC_LIMITL_DISABLED, NRFX_SAADC_LIMITH_DISABLED);    // Desactivar l√≠mites presi√≥n (detectar uso del l√°piz)
     
 }
 
