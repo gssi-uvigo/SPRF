@@ -1,0 +1,55 @@
+
+syntax = "proto2";
+//import "nanopb.proto";
+
+
+message Trama{
+
+  optional    uint32    bat_lapiz = 1;   
+  optional    uint32    bat_pulsera = 2;  
+
+  enum  Prehension{
+    MODAL = 0; 
+    DIGITAL = 1;
+    TRIDIGITAL = 2;
+  };   
+  optional    Prehension prehension = 3;
+
+  enum  Inclinacion{
+    MALA = 0; 
+    BUENA = 1;
+  };
+  optional    Inclinacion inclinacion = 4;
+
+    enum HR{
+    ANORMAL = 0;
+    NORMAL = 1;
+  };
+  optional    HR    hr = 5;
+
+  enum Pronosup{
+    SUPINO = 0;
+    PRONO = 1;
+  };
+  optional    Pronosup pronosup = 6;
+
+};
+
+message DatosCrudo{
+
+//Fuerza aplicada a cada sensor escalada a un byte (0-255)
+    required bytes DCprehensionA = 1; // [(nanopb).max_size = 100];
+    required bytes DCprehensionB = 2; // [(nanopb).max_size = 100];
+    required bytes DCprehensionC = 3; // [(nanopb).max_size = 100];
+
+//Angulo de inclinacion del lapiz respecto al plano de escritura (vector de gravedad)
+    required bytes DCinclinacionX = 4; // [(nanopb).max_size = 100];   
+    required bytes DCinclinacionY = 5; // [(nanopb).max_size = 100];
+
+//Angulo de inclinacion de la pulsera (por consiguiente del antebrazo) respecto al vector de gravedad
+    required bytes DCpronosupX = 6; // [(nanopb).max_size = 100];  
+    required bytes DCpronosupY = 7; // [(nanopb).max_size = 100];
+
+
+    //maximo 700 muestras + 100 de presion
+}
